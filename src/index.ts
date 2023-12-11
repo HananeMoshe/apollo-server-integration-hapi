@@ -72,7 +72,7 @@ function hapiMiddleware<TContext extends BaseContext>(
 
   return async (request: Request, h: ResponseToolkit, err?: Error) => {
     // need to make the graphql path mapping configurable
-    if (request.path === path) {
+    if (request.route.path === path) {
       if (err) {
         console.error('have error', err.message, err.stack);
         return h.response(err.message).code(500).takeover();
